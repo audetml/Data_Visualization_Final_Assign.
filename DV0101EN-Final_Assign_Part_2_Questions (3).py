@@ -141,21 +141,21 @@ def update_output_container(selected_statistics, input_year):
         y="Automobile_Sales",
         title="Monthly Automobile Sales per Year".format(input_year)))
 
-            # Plot bar chart for average number of vehicles sold during the given year
+# Plot 3 bar chart for average number of vehicles sold during the given year
         avr_vdata=yearly_data.groupby("Vehicle_Type")["Automobile_Sales"].mean().reset_index()
         Y_chart3 = dcc.Graph( figure=px.bar(avr_vdata,
         x="Vehicle_Type",
         y="Automobile_Sales",
         title='Average Vehicles Sold by Vehicle Type in the year {}'.format(input_year)))
 
-            # Total Advertisement Expenditure for each vehicle using pie chart
+# Plot 4 Total Advertisement Expenditure for each vehicle using pie chart
         exp_data=yearly_data.groupby("Vehicle_Type")["Advertising_Expenditure"].sum().reset_index()
         Y_chart4 = dcc.Graph(figure=px.pie(exp_data,value = "Advertising_Expenditure", names="Vehicle_Type"))
 
 #TASK 2.6: Returning the graphs for displaying Yearly data
         return [
-                html.Div(className='chart-item', children=[html.Div(Y_chart1),html.Div(Y_chart2)],style={"display": "flex"}),
-                html.Div(className='chart-item', children=[html.Div(Y_chart3),html.Div(Y_chart4)],style={"display": "flex"})
+                html.Div(className='chart-item', children=[html.Div(children=Y_chart1),html.Div(children=Y_chart2)], style={"display": "flex"}),
+                html.Div(className='chart-item', children=[html.Div(children=Y_chart3),html.Div(children=Y_chart4)], style={"display": "flex"})
                 ]
         
     else:
@@ -164,4 +164,5 @@ def update_output_container(selected_statistics, input_year):
 # Run the Dash app
 if __name__ == '__main__':
     app.run_server(debug=True)
+
 
