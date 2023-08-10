@@ -121,7 +121,7 @@ def update_output_container(selected_statistics, input_year):
 
 # TASK 2.6: Create and display graphs for Yearly Report Statistics
  # Yearly Statistic Report Plots                             
-    elif (input_year and selected_statistics== year_list and 'Yearly Statistics') :
+    elif (input_year and selected_statistics=='Yearly Statistics') :
         yearly_data = data[data['Year'] == input_year]
 
 
@@ -150,7 +150,7 @@ def update_output_container(selected_statistics, input_year):
 
 # Plot 4 Total Advertisement Expenditure for each vehicle using pie chart
         exp_data=yearly_data.groupby("Vehicle_Type")["Advertising_Expenditure"].sum().reset_index()
-        Y_chart4 = dcc.Graph(figure=px.pie(exp_data,value = "Advertising_Expenditure", names="Vehicle_Type"))
+        Y_chart4 = dcc.Graph(figure=px.pie(exp_data,values = "Advertising_Expenditure", names="Vehicle_Type"))
 
 #TASK 2.6: Returning the graphs for displaying Yearly data
         return [
